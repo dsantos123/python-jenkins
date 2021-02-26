@@ -1,0 +1,13 @@
+version: "3"
+ 
+services:
+  pythonsantosgarrido:
+    image: "dsantos123/python-jenkins"
+    ports:
+      - "5000:5000"
+    networks:
+      - mynet
+    
+networks:
+  mynet:
+    driver: bridge
