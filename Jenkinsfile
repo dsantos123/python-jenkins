@@ -46,7 +46,7 @@ pipeline {
                 
                 sh 'docker tag python-jenkins:latest dsantos123/python-jenkins:latest'
                 echo "			Subiendo la imagen repositorio de docker hub"
-                sh 'pwd'
+                sh 'docker login --username dsantos123 --password escribeme1'
                 sh ' docker push dsantos123/python-jenkins:latest'
                 echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
                 sh 'docker rmi dsantos123/python-jenkins:latest'
