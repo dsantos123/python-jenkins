@@ -62,9 +62,9 @@ pipeline {
                 //echo "			  Descargando imagen nueva en el servidor de producción"
                 //sh 'ssh -i /home/jenkins/keyHLC root@192.168.15.128 docker pull $Imagen'
                 echo "Parando servicios "
-                sh 'ssh root@192.168.15.128 docker-compose up'
+                sh 'ssh santosgarrido@192.168.15.128 docker-compose -f /home/santosgarrido/docker-compose.yml down'
                 echo "           Arrancando nueva imagen "
-                //sh 'ssh root@192.168.15.128 docker-compose -f /home/santosgarrido/docker-compose.yml up -d'
+                sh 'ssh santosgarrido@192.168.15.128 docker-compose -f /home/santosgarrido/docker-compose.yml up -d'
             }
           }  
           stage('Desplegando con un bucle muchos servidores') {
