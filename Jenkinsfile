@@ -46,7 +46,7 @@ pipeline {
                 
                 sh 'docker tag python-jenkins:latest dsantos123/python-jenkins:latest'
                 echo "			Subiendo la imagen repositorio de docker hub"
-                sh 'docker login --username dsantos123 --password escribeme1'
+                //sh 'docker login --username dsantos123 --password escribeme1'
                 sh ' docker push dsantos123/python-jenkins:latest'
                 echo "			Borrando la imagen en modo local, aunque la dejamos para que no tarde tanto"
                 sh 'docker rmi dsantos123/python-jenkins:latest'
@@ -58,13 +58,13 @@ pipeline {
             }
             steps {
                 echo "			  Enviando el fichero docker-compose "           
-                sh 'scp -i /home/jenkins/keyHLC docker-compose.yml root@192.168.15.128/HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml'
+                sh 'scp -i /root/git-projects/python-jenkins/docker-compose.yml root@192.168.15.128:/HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml'
                 //echo "			  Descargando imagen nueva en el servidor de producción"
                 //sh 'ssh -i /home/jenkins/keyHLC root@192.168.15.128 docker pull $Imagen'
                 echo "Parando servicios "
-                sh 'ssh -i /home/jenkins/keyHLC root@192.168.15.128 docker-compose -f /HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml down'
+                sh 'ssh -i /root/git-projects/python-jenkins root@192.168.15.128 docker-compose -f /HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml down'
                 echo "           Arrancando nueva imagen "
-                sh 'ssh -i /home/jenkins/keyHLC root@192.168.15.128 docker-compose -f /HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml up -d'
+                sh 'ssh -i /root/git-projects/python-jenkins root@192.168.15.128 docker-compose -f /HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml up -d'
             }
           }  
           stage('Desplegando con un bucle muchos servidores') {
