@@ -10,8 +10,7 @@ pipeline {
                 echo "          -------------CONSTRUYENDO MI SOFTWARE/CODE"
                 echo "          Creando entorno virtual"
                 //bat 'virtualenv entorno_virtual'
-                bat 'cd "C:/WINDOWS/system32"'
-                bat 'python3 -m venv entorno_virtual'
+                bat 'virtualenv entorno_virtual'
                 echo "          Activando el entorno_virtual"
                 bat '. entorno_virtual/bin/activate'
                 //sh 'pip3 --version'
