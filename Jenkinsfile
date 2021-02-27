@@ -72,7 +72,7 @@ pipeline {
     
 post {
    failure {  
-            echo "Se enviará un correo para informar del fallo"
+            echo "Se enviará un correo para informar del fallo."
              mail bcc: '', body: "<b>Build failed</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'dsantosgarrido01@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "dsantosgarrido01@gmail.com";  
          }    
     }
