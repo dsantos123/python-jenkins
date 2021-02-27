@@ -58,7 +58,7 @@ pipeline {
             }
             steps {
                 echo "			  Enviando el fichero docker-compose "           
-                sh 'scp -i /root/git-projects/python-jenkins/docker-compose.yml root@192.168.15.128:/HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml'
+                sh 'scp -i /root/git-projects/python-jenkins/docker-compose.yml -J root@192.168.15.128:/HLC-Francisco/santosgarrido/python-jenkins/docker-compose.yml'
                 //echo "			  Descargando imagen nueva en el servidor de producción"
                 //sh 'ssh -i /home/jenkins/keyHLC root@192.168.15.128 docker pull $Imagen'
                 echo "Parando servicios "
